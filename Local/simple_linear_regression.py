@@ -24,7 +24,9 @@ theta1 = np.sum((X - np.mean(X)) * (y - np.mean(y))) / np.sum((X - np.mean(X)) *
 theta0 = np.mean(y) - theta1 * np.mean(X)
 print(f"Regression Model: y={theta0:.2f}, X={theta1:.2f}")
 
-X_test = 20
+X_test = housing.sample(10, random_state=42)['size'].to_numpy()
+y_test = housing.sample(10, random_state=42)['price'].to_numpy()
+print(f"Asl narxi(qiymati): y={y_test.astype(int)}")
+print(f"x={X_test.astype(int)}")
 y_pred = theta0 + theta1 * X_test
-print(f"Prediction(Bashorat): x={X_test}, y={y_pred:.2f}")
-print(f"Asl qiymat: y={X[X == X_test]}")
+print(f"Prediction(Bashorat): y={y_pred.astype(int)}")
